@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aerez/CLionProjects/CustomFrame/Tx/CustomFrame.h
+stdint.h
+-
+
+/home/aerez/CLionProjects/CustomFrame/Tx/FileSender.cpp
+iostream
+-
+FileSender.h
+/home/aerez/CLionProjects/CustomFrame/Tx/FileSender.h
+
+/home/aerez/CLionProjects/CustomFrame/Tx/FileSender.h
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+errno.h
+-
+string.h
+-
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+netdb.h
+-
+CustomFrame.h
+/home/aerez/CLionProjects/CustomFrame/Tx/CustomFrame.h
+
