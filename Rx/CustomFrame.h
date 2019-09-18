@@ -9,13 +9,13 @@
 #include <stdint.h>
 #include <iostream>
 
-#define MAXDATALEN 256
+#define MAXDATALEN 2056
 class CustomFrame {
     uint8_t sync;
     uint32_t dst;
     uint32_t src;
     uint8_t fileID;
-    uint8_t datasize;
+    uint16_t datasize;
     char data[MAXDATALEN];
 
 public:
@@ -47,9 +47,9 @@ public:
 
     void setFileId(uint8_t fileId);
 
-    uint8_t getDatasize() const;
+    uint16_t getDatasize() const;
 
-    void setDatasize(uint8_t datasize);
+    void setDatasize(uint16_t datasize);
 
 
 };

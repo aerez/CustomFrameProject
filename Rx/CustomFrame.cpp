@@ -10,14 +10,19 @@ uint32_t deserialize32bit(unsigned char* buffer){
     return ret;
 }
 
+uint16_t deserialize16(unsigned char* buffer){
+    uint16_t ret= (buffer[0]<<8)|(buffer[1]);
+    return ret;
+}
+
 CustomFrame::CustomFrame(unsigned char *buffer) {
     sync=buffer[0];
     dst= deserialize32bit(buffer+1);
     src=deserialize32bit(buffer+5);
     fileID=buffer[9];
-    datasize=buffer[10];
-    for(int i=0;i<datasize;i++){
-        data[i]=buffer[11+i];
+    datasize=deserialize16(buffer+10);
+    for(uint16_t i=0;i<datasize;i++){
+        data[i]=buffer[12+i];
     }
 
 }
@@ -75,11 +80,11 @@ void CustomFrame::setFileId(uint8_t fileId) {
     fileID = fileId;
 }
 
-uint8_t CustomFrame::getDatasize() const {
+uint16_t CustomFrame::getDatasize() const {
     return datasize;
 }
 
-void CustomFrame::setDatasize(uint8_t datasize) {
+void CustomFrame::setDatasize(uint16_t datasize) {
     CustomFrame::datasize = datasize;
 }
 

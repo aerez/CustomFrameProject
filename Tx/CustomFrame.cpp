@@ -6,7 +6,7 @@
 #include <cstring>
 #include "CustomFrame.h"
 
-CustomFrame::CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint8_t datasize, char data[]) : sync(
+CustomFrame::CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint16_t datasize, char data[]) : sync(
         sync), dst(dst), src(src), fileID(fileId), datasize(datasize) {strcpy(this->data,"");strncpy(this->data,data,datasize);}
 
 uint8_t CustomFrame::getSync() const {
@@ -41,11 +41,11 @@ void CustomFrame::setFileId(uint8_t fileId) {
     fileID = fileId;
 }
 
-uint8_t CustomFrame::getDatasize() const {
+uint16_t CustomFrame::getDatasize() const {
     return datasize;
 }
 
-void CustomFrame::setDatasize(uint8_t datasize) {
+void CustomFrame::setDatasize(uint16_t datasize) {
     CustomFrame::datasize = datasize;
 }
 
@@ -65,12 +65,12 @@ std::ostream &operator<<(std::ostream &os, const CustomFrame &frame) {
 }
 
 
-unsigned char * serialize_8bit(unsigned char *buffer, int value){
+ char * serialize_8bit(char *buffer, int value){
     buffer[0]=value;
     return buffer+1;
 }
 
-unsigned char * serialize_32bit(unsigned char *buffer,uint32_t value){
+char * serialize_32bit(char *buffer,uint32_t value){
     buffer[0]=value>>24;
     buffer[1]=value>>16;
     buffer[2]=value>>8;
@@ -78,22 +78,32 @@ unsigned char * serialize_32bit(unsigned char *buffer,uint32_t value){
     return buffer+4;
 }
 
-unsigned char* addData(unsigned char* buffer, const char* data,int datasize){
+char * serialize_16bit(char *buffer, uint16_t value){
+    //std::cout<<"TESTTT: "<<value<<std::endl;
+    buffer[0]=value>>8;
+    buffer[1]=value;
 
-    for(int i=0;i<datasize;i++){
+    return buffer+2;
+}
+
+char* addData(char* buffer, const char* data,uint16_t datasize){
+
+    for(uint16_t i=0;i<datasize;i++){
         buffer[i]=data[i];
         //std::cout<<data[i];
     }
+
+    //std::cout<<std::endl<<datasize<<std::endl<<"SIZEEEEEE"<<(int)((buffer+datasize)-buffer)<<std::endl;
     return buffer+datasize;
 }
 
-unsigned char * serialize_frame(unsigned char *buffer,CustomFrame *value){
+char * serialize_frame(char *buffer,CustomFrame *value){
 
     buffer= serialize_8bit(buffer,value->getSync());
     buffer=serialize_32bit(buffer,value->getDst());
     buffer=serialize_32bit(buffer,value->getSrc());
     buffer=serialize_8bit(buffer, value->getFileId());
-    buffer= serialize_8bit(buffer, value->getDatasize());
+    buffer= serialize_16bit(buffer, value->getDatasize());
     buffer=addData(buffer,value->getData(),value->getDatasize());
 
     return buffer;

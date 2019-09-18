@@ -9,17 +9,17 @@
 #include <stdint.h>
 #include <ostream>
 
-#define MAXDATALEN 255
+#define MAXDATALEN 2056
 class CustomFrame {
 uint8_t sync;
 uint32_t dst;
 uint32_t src;
 uint8_t fileID;
-uint8_t datasize;
+uint16_t datasize;
 char data[MAXDATALEN];
 
 public:
-    CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint8_t datasize, char *data);
+    CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint16_t datasize, char *data);
 
     friend std::ostream &operator<<(std::ostream &os, const CustomFrame &frame);
 
@@ -39,9 +39,9 @@ public:
 
     void setFileId(uint8_t fileId);
 
-    uint8_t getDatasize() const;
+    uint16_t getDatasize() const;
 
-    void setDatasize(uint8_t datasize);
+    void setDatasize(uint16_t datasize);
 
     const char *getData() const;
 
@@ -49,15 +49,15 @@ public:
 };
 
 
-unsigned char * serialize_8bit(unsigned char *buffer, int value);
+char * serialize_8bit(char *buffer, int value);
 
 
-unsigned char * serialize_32bit(unsigned char *buffer,uint32_t value);
+ char * serialize_32bit(char *buffer,uint32_t value);
 
 
-unsigned char* addData(unsigned char* buffer, char* data,int datasize);
+ char* addData( char* buffer, char* data,uint16_t datasize);
 
-unsigned char * serialize_frame(unsigned char *buffer,CustomFrame *value);
+ char * serialize_frame(char *buffer,CustomFrame *value);
 
 
 
