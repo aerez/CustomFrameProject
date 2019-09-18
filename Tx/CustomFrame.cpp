@@ -3,10 +3,11 @@
 //
 
 #include <iostream>
+#include <cstring>
 #include "CustomFrame.h"
 
-CustomFrame::CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint8_t datasize, char *data) : sync(
-        sync), dst(dst), src(src), fileID(fileId), datasize(datasize), data(data) {}
+CustomFrame::CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint8_t datasize, char data[]) : sync(
+        sync), dst(dst), src(src), fileID(fileId), datasize(datasize) {strcpy(this->data,"");strncpy(this->data,data,datasize);}
 
 uint8_t CustomFrame::getSync() const {
     return sync;
@@ -48,16 +49,23 @@ void CustomFrame::setDatasize(uint8_t datasize) {
     CustomFrame::datasize = datasize;
 }
 
-char *CustomFrame::getData() const {
+const char *CustomFrame::getData() const {
     return data;
 }
 
 void CustomFrame::setData(char *data) {
-    CustomFrame::data = data;
+    strcpy(this->data,data);
 }
 
-template <class T>
-unsigned char * serialize_8bit(unsigned char *buffer, T value){
+std::ostream &operator<<(std::ostream &os, const CustomFrame &frame) {
+
+    os << "sync: " << frame.sync << " dst: " << frame.dst << " src: " << frame.src << " fileID: " << (int)frame.fileID
+       << " datasize: " << (int)frame.datasize << " data: " << frame.data;
+    return os;
+}
+
+
+unsigned char * serialize_8bit(unsigned char *buffer, int value){
     buffer[0]=value;
     return buffer+1;
 }
@@ -70,10 +78,11 @@ unsigned char * serialize_32bit(unsigned char *buffer,uint32_t value){
     return buffer+4;
 }
 
-unsigned char* addData(unsigned char* buffer, char* data,int datasize){
-    std::cout<<datasize<<std::endl;
+unsigned char* addData(unsigned char* buffer, const char* data,int datasize){
+
     for(int i=0;i<datasize;i++){
         buffer[i]=data[i];
+        //std::cout<<data[i];
     }
     return buffer+datasize;
 }

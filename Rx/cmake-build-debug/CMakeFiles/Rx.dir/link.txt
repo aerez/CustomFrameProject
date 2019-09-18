@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Rx.dir/main.cpp.o CMakeFiles/Rx.dir/FileReceiver.cpp.o CMakeFiles/Rx.dir/CustomFrame.cpp.o  -o Rx 

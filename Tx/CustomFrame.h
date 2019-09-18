@@ -7,18 +7,21 @@
 
 
 #include <stdint.h>
+#include <ostream>
 
-
+#define MAXDATALEN 255
 class CustomFrame {
 uint8_t sync;
 uint32_t dst;
 uint32_t src;
 uint8_t fileID;
 uint8_t datasize;
-char* data;
+char data[MAXDATALEN];
 
 public:
     CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint8_t datasize, char *data);
+
+    friend std::ostream &operator<<(std::ostream &os, const CustomFrame &frame);
 
     uint8_t getSync() const;
 
@@ -40,13 +43,13 @@ public:
 
     void setDatasize(uint8_t datasize);
 
-    char *getData() const;
+    const char *getData() const;
 
     void setData(char *data);
 };
 
-template <class T>
-unsigned char * serialize_8bit(unsigned char *buffer, T value);
+
+unsigned char * serialize_8bit(unsigned char *buffer, int value);
 
 
 unsigned char * serialize_32bit(unsigned char *buffer,uint32_t value);

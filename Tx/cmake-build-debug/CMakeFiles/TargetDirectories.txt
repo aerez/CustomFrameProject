@@ -1,3 +1,3 @@
-/home/aerez/CLionProjects/CustomFrame/Tx/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/aerez/CLionProjects/CustomFrame/Tx/cmake-build-debug/CMakeFiles/Tx.dir
-/home/aerez/CLionProjects/CustomFrame/Tx/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/aerez/CLionProjects/CustomFrameProject/Tx/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/aerez/CLionProjects/CustomFrameProject/Tx/cmake-build-debug/CMakeFiles/Tx.dir
+/home/aerez/CLionProjects/CustomFrameProject/Tx/cmake-build-debug/CMakeFiles/edit_cache.dir

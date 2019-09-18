@@ -1,0 +1,3 @@
+/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/Rx.dir
+/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/edit_cache.dir

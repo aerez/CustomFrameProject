@@ -23,12 +23,14 @@
 #define PORT "4950"
 
 class FileSender {
-char* path;
+std::string path;
 
 public:
     FileSender(char* path);
 
     int Run();
+
+    int sendFile(int sock, struct addrinfo* p);
 };
 
 

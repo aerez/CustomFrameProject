@@ -10,6 +10,8 @@ using namespace std;
 
 FileSender::FileSender(char *path) : path(path){};
 
+
+
 int FileSender::Run(){
     cout<<"hello"<<endl;
     int sockfd;
@@ -17,7 +19,7 @@ int FileSender::Run(){
     int rv;
     int numbytes;
 
-    char data[]="hello";
+    path.append("sample.txt");
 
     memset(&hints,0,sizeof hints);
     hints.ai_family=AF_INET;
@@ -39,25 +41,52 @@ int FileSender::Run(){
         cout<<"error creating socket"<<endl;
         return 2;
     }
-    struct in_addr loopback;
-    inet_pton(AF_INET,"127.0.0.1",&loopback);
-    cout<<sizeof data<<endl;
-    CustomFrame cf('$',loopback.s_addr,loopback.s_addr,1,sizeof data, data);
-    unsigned char *ptr,buffer[100];
-    ptr= serialize_frame(buffer,&cf);
-    int size= ptr-buffer;
-    cout<<size<<endl;
-    for(int i=0;i<size-1;i++){
-        cout<<buffer[i];
-    }
-    if((numbytes=sendto(sockfd,buffer,size,0,p->ai_addr,p->ai_addrlen)==-1){
-        perror("sendto");
-        exit(1);
-    }
-
+    sendFile(sockfd,p);
     freeaddrinfo(servinfo);
 
     close(sockfd);
 
 
 };
+
+int FileSender::sendFile(int sockfd, struct addrinfo* p) {
+    FILE* f;
+    int numbytes;
+    struct in_addr loopback;
+    inet_pton(AF_INET,"127.0.0.1",&loopback);
+    f= fopen(path.c_str(),"rb");
+    if(f==NULL){
+        cout<<"fileopen error"<<endl;
+        return 1;
+    }
+
+    while(1) {
+        char databuffer[MAXDATALEN]={0};
+        numbytes= fread(databuffer,1,255,f);
+        cout<<endl<<"numbytes: "<<numbytes<<endl;
+        CustomFrame cf('$', loopback.s_addr, loopback.s_addr, 1, numbytes, databuffer);
+        //cout<<cf<<endl;
+        for(int i=0;i<numbytes;i++){
+            cout<<cf.getData()[i];
+        }
+
+        //cout<<"sizeofcf: "<<sizeof(cf)<<endl;
+        unsigned char *ptr, buffer[512];
+        ptr = serialize_frame(buffer, &cf);
+        int size = ptr - buffer;
+        //cout<<"size: "<<size<<endl;
+        if(numbytes>0){
+            sendto(sockfd,buffer,size,0,p->ai_addr,p->ai_addrlen);
+        }
+        if(numbytes<255){
+            if(feof(f)){
+                cout<<"end of file"<<endl<<"Complete";
+
+            }
+            if(ferror(f))
+                cout<<"Error reading"<<endl;
+
+            break;
+        }
+    }
+    }

@@ -6,17 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/home/aerez/CLionProjects/CustomFrame/Tx/CustomFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.cpp
+iostream
+-
+cstring
+-
+CustomFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
+
+/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
 stdint.h
 -
+ostream
+-
 
-/home/aerez/CLionProjects/CustomFrame/Tx/FileSender.cpp
+/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.cpp
 iostream
 -
 FileSender.h
-/home/aerez/CLionProjects/CustomFrame/Tx/FileSender.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 
-/home/aerez/CLionProjects/CustomFrame/Tx/FileSender.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 stdio.h
 -
 stdlib.h
@@ -38,5 +48,11 @@ arpa/inet.h
 netdb.h
 -
 CustomFrame.h
-/home/aerez/CLionProjects/CustomFrame/Tx/CustomFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
+
+/home/aerez/CLionProjects/CustomFrameProject/Tx/main.cpp
+iostream
+-
+FileSender.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 
