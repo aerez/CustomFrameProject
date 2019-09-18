@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <cmath>
 #include "FileSender.h"
 
 
@@ -60,6 +61,14 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
         return 1;
     }
 
+    fseek(f,0,SEEK_END);
+    double sz=ftell(f);
+
+    fseek(f,0,SEEK_SET);
+
+    sz= ceil(sz/MAXDATALEN);
+    cout<<"NUMBER OF CHUNKS: "<<sz<<endl<<endl;
+    sendto(sockfd,&sz,sizeof(sz),0,p->ai_addr,p->ai_addrlen);
     while(1) {
         char databuffer[MAXDATALEN]={0};
         numbytes= fread(databuffer,1,255,f);

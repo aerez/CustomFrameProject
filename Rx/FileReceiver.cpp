@@ -60,20 +60,22 @@ int FileReceiver::receiveFile(int sockfd,int filenum) {
     name.append(to_string(filenum)+".txt");
     cout<<"receiving file"<<endl;
     path.append(name);
-    f=fopen(path.c_str(),"ab");
+    f=fopen(path.c_str(),"wb");
     if(f==NULL){
         cout<<"Error opening file";
         return 1;
     }
-   while(1){
+    double numberofchunks;
+    recvfrom(sockfd,&numberofchunks,sizeof(numberofchunks),0,(struct sockaddr*)&their_addr,&addr_len);
+    int x=1;
+   while(x<=numberofchunks){
        unsigned char buffer[512]={0};
        byteReceieved= recvfrom(sockfd,buffer,512,0,(struct sockaddr*)&their_addr,&addr_len);
        CustomFrame* cf= new CustomFrame(buffer);
-       cout<<*cf<<"--------------------"<<endl;
+       //cout<<*cf<<"--------------------"<<endl;
+       cout<<"Received ("<<x<<"/"<<numberofchunks<<")"<<endl;
        fwrite(cf->getData(),1,cf->getDatasize(),f);
-       if(byteReceieved==0){
-           break;
-       }
+       x++;
    }
 
     if(byteReceieved<0)

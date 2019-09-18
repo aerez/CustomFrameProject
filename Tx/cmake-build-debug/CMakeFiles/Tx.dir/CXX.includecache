@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.cpp
-iostream
--
-cstring
--
-CustomFrame.h
-/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
-
 /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
 stdint.h
 -
@@ -22,6 +14,8 @@ ostream
 
 /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.cpp
 iostream
+-
+cmath
 -
 FileSender.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
@@ -49,10 +43,4 @@ netdb.h
 -
 CustomFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
-
-/home/aerez/CLionProjects/CustomFrameProject/Tx/main.cpp
-iostream
--
-FileSender.h
-/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 
