@@ -67,17 +67,16 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
     fseek(f,0,SEEK_SET);
 
     sz= ceil(sz/MAXDATALEN);
+    int x=1;
     cout<<"NUMBER OF CHUNKS: "<<sz<<endl<<endl;
     sendto(sockfd,&sz,sizeof(sz),0,p->ai_addr,p->ai_addrlen);
-    while(1) {
+    while(x<=sz) {
         char databuffer[MAXDATALEN]={0};
         numbytes= fread(databuffer,1,255,f);
         cout<<endl<<"numbytes: "<<numbytes<<endl;
         CustomFrame cf('$', loopback.s_addr, loopback.s_addr, 1, numbytes, databuffer);
         //cout<<cf<<endl;
-        for(int i=0;i<numbytes;i++){
-            cout<<cf.getData()[i];
-        }
+        cout<<"Received ("<<x<<"/"<<sz<<")"<<endl;
 
         //cout<<"sizeofcf: "<<sizeof(cf)<<endl;
         unsigned char *ptr, buffer[512];
@@ -95,7 +94,9 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
             if(ferror(f))
                 cout<<"Error reading"<<endl;
 
-            break;
+
         }
+
+        x++;
     }
     }

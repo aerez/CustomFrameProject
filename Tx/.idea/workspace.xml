@@ -11,14 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d09d87-0470-4c48-8262-56619cf17c21" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Rx/FileReceiver.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/FileReceiver.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Rx/cmake-build-debug/CMakeFiles/Rx.dir/FileReceiver.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/cmake-build-debug/CMakeFiles/Rx.dir/FileReceiver.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Rx/cmake-build-debug/Rx" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/cmake-build-debug/Rx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Rx/file1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/file1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileSender.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FileSender.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="b2d09d87-0470-4c48-8262-56619cf17c21" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +74,7 @@
       <workItem from="1568666169074" duration="62000" />
       <workItem from="1568707204424" duration="2647000" />
       <workItem from="1568791413924" duration="11195000" />
-      <workItem from="1568809291261" duration="963000" />
+      <workItem from="1568809291261" duration="1654000" />
     </task>
     <servers />
   </component>
