@@ -6,15 +6,20 @@
 #include <cstring>
 #include "CustomFrame.h"
 
-CustomFrame::CustomFrame(uint8_t sync, uint32_t dst, uint32_t src, uint8_t fileId, uint16_t datasize, char data[]) : sync(
-        sync), dst(dst), src(src), fileID(fileId), datasize(datasize) {strcpy(this->data,"");strncpy(this->data,data,datasize);}
+CustomFrame::CustomFrame(uint8_t fileID, uint32_t dst, uint32_t src, uint16_t chunkId, uint16_t datasize,char data[MAXDATALEN]): fileID(
+        fileID), dst(dst), src(src), chunkID(chunkId), datasize(datasize) {
+    for(int i=0;i<datasize;i++){
+        (this->data)[i]=data[i];
+    }
 
-uint8_t CustomFrame::getSync() const {
-    return sync;
 }
 
-void CustomFrame::setSync(uint8_t sync) {
-    CustomFrame::sync = sync;
+uint8_t CustomFrame::getfileID() const {
+    return fileID;
+}
+
+void CustomFrame::setfileID(uint8_t fileID) {
+    CustomFrame::fileID = fileID;
 }
 
 uint32_t CustomFrame::getDst() const {
@@ -33,12 +38,12 @@ void CustomFrame::setSrc(uint32_t src) {
     CustomFrame::src = src;
 }
 
-uint8_t CustomFrame::getFileId() const {
-    return fileID;
+uint16_t CustomFrame::getChunkId() const {
+    return chunkID;
 }
 
-void CustomFrame::setFileId(uint8_t fileId) {
-    fileID = fileId;
+void CustomFrame::setChunkId(uint16_t chunkId) {
+    chunkID = chunkId;
 }
 
 uint16_t CustomFrame::getDatasize() const {
@@ -53,58 +58,56 @@ const char *CustomFrame::getData() const {
     return data;
 }
 
-void CustomFrame::setData(char *data) {
+void CustomFrame::setData(char data[]) {
     strcpy(this->data,data);
 }
 
 std::ostream &operator<<(std::ostream &os, const CustomFrame &frame) {
 
-    os << "sync: " << frame.sync << " dst: " << frame.dst << " src: " << frame.src << " fileID: " << (int)frame.fileID
+    os << "sync: " << frame.fileID << " dst: " << frame.dst << " src: " << frame.src << " fileID: " << (int)frame.fileID
        << " datasize: " << (int)frame.datasize << " data: " << frame.data;
     return os;
 }
 
 
- char * serialize_8bit(char *buffer, int value){
+void serialize_8bit(char *buffer, int value){
     buffer[0]=value;
-    return buffer+1;
+
 }
 
-char * serialize_32bit(char *buffer,uint32_t value){
+void serialize_32bit(char* buffer,uint32_t value){
+
     buffer[0]=value>>24;
     buffer[1]=value>>16;
     buffer[2]=value>>8;
     buffer[3]=value;
-    return buffer+4;
+
 }
 
-char * serialize_16bit(char *buffer, uint16_t value){
-    //std::cout<<"TESTTT: "<<value<<std::endl;
+void serialize_16bit(char* buffer,uint16_t value){
     buffer[0]=value>>8;
     buffer[1]=value;
 
-    return buffer+2;
 }
 
-char* addData(char* buffer, const char* data,uint16_t datasize){
 
-    for(uint16_t i=0;i<datasize;i++){
-        buffer[i]=data[i];
-        //std::cout<<data[i];
+
+std::string CustomFrame::serialize_frame(){
+
+    char buffer[datasize+13];
+    serialize_8bit(buffer,fileID);
+    serialize_32bit(buffer+1, dst);
+    serialize_32bit(buffer+5, src);
+    serialize_16bit(buffer+9,chunkID);
+    serialize_16bit(buffer+11,datasize);
+
+    int counter=0;
+    for(int i=0;i<datasize;i++){
+        counter++;
+        buffer[i+13]=data[i];
     }
+    std::string frame=std::string(buffer, datasize+13);
 
-    //std::cout<<std::endl<<datasize<<std::endl<<"SIZEEEEEE"<<(int)((buffer+datasize)-buffer)<<std::endl;
-    return buffer+datasize;
-}
 
-char * serialize_frame(char *buffer,CustomFrame *value){
-
-    buffer= serialize_8bit(buffer,value->getSync());
-    buffer=serialize_32bit(buffer,value->getDst());
-    buffer=serialize_32bit(buffer,value->getSrc());
-    buffer=serialize_8bit(buffer, value->getFileId());
-    buffer= serialize_16bit(buffer, value->getDatasize());
-    buffer=addData(buffer,value->getData(),value->getDatasize());
-
-    return buffer;
+    return frame;
 }

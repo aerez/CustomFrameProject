@@ -53,15 +53,14 @@ int FileSender::Run(){
 int FileSender::sendFile(int sockfd, struct addrinfo* p) {
     FILE* f;
     int numbytes;
-    string names[]={"file1.txt","wireshark.jpg","test100k.db","onemb.jpg","file5.zip"};
+    string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
     int counter=5;
     struct in_addr loopback;
     inet_pton(AF_INET,"127.0.0.1",&loopback);
 
-    for(int i=0;i<counter;i++) {
+    for(int i=0;i<5;i++) {
         string name=path;
         name.append(names[i]);
-        //cout<<"opening file :  "<<name<<endl;
         f = fopen(name.c_str(), "rb");
         if (f == NULL) {
             cout << "fileopen error" << endl;
@@ -72,31 +71,26 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
         long double sz = ftell(f);
         fseek(f, 0, SEEK_SET);
         sz = ceil(sz / MAXDATALEN);
-        int x = 1;
-        cout << "NUMBER OF CHUNKS: " << sz << endl << endl;
+        uint16_t x = 1;
+        cout<< "SENDING: "<<names[i]<<endl;
+        cout << "NUMBER OF CHUNKS: " << sz << endl;
         sendto(sockfd, &sz, sizeof(sz), 0, p->ai_addr, p->ai_addrlen);
+        FILE *t=fopen("/home/aerez/test.txt","w");
         while (x <= sz) {
-            char databuffer[MAXDATALEN] = {0};
+            char databuffer[MAXDATALEN];
             numbytes = fread(databuffer, 1, MAXDATALEN, f);
-           // cout << endl << "numbytes: " << numbytes << endl;
-            CustomFrame cf('$', loopback.s_addr, loopback.s_addr, i, numbytes, databuffer);
-            //cout<<"DATA: "<<cf.getData()<<endl;
-            //cout<<cf<<endl;
+            CustomFrame cf(i, loopback.s_addr, loopback.s_addr, x-1, numbytes,databuffer);
             cout << "\r";
             cout << "Sent(" << x << "/" << sz << ")";
-
-            //cout<<"sizeofcf: "<<sizeof(cf)<<endl;
-            char *ptr, buffer[MAXDATALEN+12];
-            ptr = serialize_frame(buffer, &cf);
-            int size = ptr - buffer;
-            //cout<<endl<<"size: "<<size<<endl;
+            string frame= cf.serialize_frame();
             if (numbytes > 0) {
-                int bytessent=sendto(sockfd, buffer, size, 0, p->ai_addr, p->ai_addrlen);
-                //cout<<bytessent<<endl;
+                sendto(sockfd, frame.c_str(), frame.size(), 0, p->ai_addr, p->ai_addrlen);
+                x++;
+                fwrite(databuffer,1,numbytes,t);
             }
-            if (numbytes < 1036) {
+            if (numbytes < MAXDATALEN+13) {
                 if (feof(f)) {
-                    cout << "end of file" << endl << "Complete";
+                    cout<<"COMPLETED" << endl ;
 
                 }
                 if (ferror(f))
@@ -105,10 +99,11 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
 
             }
 
-            x++;
 
 
-            usleep(500);
+        usleep(500);
+
         }
+
     }
     }

@@ -9,19 +9,19 @@
 #include <stdint.h>
 #include <iostream>
 
-#define MAXDATALEN 2056
+#define MAXDATALEN 1024
 class CustomFrame {
-    uint8_t sync;
+    uint8_t fileID;
     uint32_t dst;
     uint32_t src;
-    uint8_t fileID;
+    uint16_t chunkID;
     uint16_t datasize;
     char data[MAXDATALEN];
 
 public:
 
 
-    CustomFrame(unsigned char* buffer);
+    CustomFrame(char* buffer);
 
     void showData();
 
@@ -31,9 +31,9 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const CustomFrame &frame);
 
-    uint8_t getSync() const;
+    uint8_t getFileID() const;
 
-    void setSync(uint8_t sync);
+    void setfileID(uint8_t fileID);
 
     uint32_t getDst() const;
 
@@ -43,9 +43,9 @@ public:
 
     void setSrc(uint32_t src);
 
-    uint8_t getFileId() const;
+    uint16_t getChunkId() const;
 
-    void setFileId(uint8_t fileId);
+    void setChunkId(uint16_t chunkId);
 
     uint16_t getDatasize() const;
 
@@ -54,6 +54,6 @@ public:
 
 };
 
-uint32_t deserialize32bit(unsigned char* buffer);
+uint32_t deserialize32bit(char* buffer);
 
 #endif //TX_CUSTOMFRAME_H

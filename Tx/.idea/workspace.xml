@@ -18,6 +18,10 @@
       <change beforePath="$PROJECT_DIR$/../Rx/cmake-build-debug/CMakeFiles/Rx.dir/CustomFrame.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/cmake-build-debug/CMakeFiles/Rx.dir/CustomFrame.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rx/cmake-build-debug/CMakeFiles/Rx.dir/FileReceiver.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/cmake-build-debug/CMakeFiles/Rx.dir/FileReceiver.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Rx/cmake-build-debug/Rx" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/cmake-build-debug/Rx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rx/file1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rx/file5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/file5.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rx/onemb.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/onemb.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Rx/wireshark.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../Rx/wireshark.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomFrame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFrame.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomFrame.h" beforeDir="false" afterPath="$PROJECT_DIR$/CustomFrame.h" afterDir="false" />
@@ -25,7 +29,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Tx.dir/CustomFrame.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Tx.dir/CustomFrame.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Tx.dir/FileSender.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Tx.dir/FileSender.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Tx" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Tx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/file1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file1.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +94,9 @@
       <workItem from="1568707204424" duration="2647000" />
       <workItem from="1568791413924" duration="11195000" />
       <workItem from="1568809291261" duration="2143000" />
-      <workItem from="1568821403591" duration="9156000" />
+      <workItem from="1568821403591" duration="9596000" />
+      <workItem from="1568833762313" duration="4164000" />
+      <workItem from="1568889306474" duration="20662000" />
     </task>
     <task id="LOCAL-00001" summary="fixed terminal output">
       <created>1568812517670</created>
@@ -121,5 +127,17 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed terminal output" />
     <option name="LAST_COMMIT_MESSAGE" value="fixed terminal output" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="data" language="ObjectiveC" />
+        <watch expression="databuffer" />
+        <watch expression="buffer" />
+        <watch expression="datasize" />
+        <watch expression="fileID" />
+        <watch expression="counter" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

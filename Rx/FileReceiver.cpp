@@ -53,10 +53,9 @@ int FileReceiver::Run() {
 int FileReceiver::receiveFile(int sockfd,int filenum) {
     struct sockaddr_storage their_addr;
     socklen_t addr_len;
-    string names[]={"file1.txt","wireshark.jpg","test100k.db","onemb.jpg","file5.zip"};
-    int counter=5;
+    string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
     int byteReceieved;
-    for(int i=0;i<counter;i++){
+    for(int i=0;i<5;i++){
     FILE *f;
     string name=path;
     name.append(names[i]);
@@ -66,18 +65,19 @@ int FileReceiver::receiveFile(int sockfd,int filenum) {
         cout<<"Error opening file";
         return 1;
     }
+    fseek(f,0,SEEK_SET);
     long double numberofchunks;
     recvfrom(sockfd,&numberofchunks,sizeof(numberofchunks),0,(struct sockaddr*)&their_addr,&addr_len);
     long double x=1;
    while(x<=numberofchunks){
-       unsigned char buffer[MAXDATALEN+12]={0};
-       byteReceieved= recvfrom(sockfd,buffer,MAXDATALEN+12,0,(struct sockaddr*)&their_addr,&addr_len);
-       //cout<<"bytes received"<< byteReceieved<<endl;
+       char buffer[MAXDATALEN+13]={0};
+       byteReceieved= recvfrom(sockfd,buffer,MAXDATALEN+13,0,(struct sockaddr*)&their_addr,&addr_len);
        CustomFrame* cf= new CustomFrame(buffer);
-       //cout<<*cf<<"--------------------"<<endl;
        cout << "\r";
        cout<<"Received ("<<x<<"/"<<numberofchunks<<")";
+       fseek(f, cf->getChunkId()*MAXDATALEN,SEEK_SET);
        fwrite(cf->getData(),1,cf->getDatasize(),f);
+
        x++;
    }
 
@@ -85,6 +85,7 @@ int FileReceiver::receiveFile(int sockfd,int filenum) {
         cout<<endl<<"READ ERROR"<<endl;
 
     cout<<"FILE COMPLETED"<<endl;
+    fclose(f);
     }
 
     return 0;
