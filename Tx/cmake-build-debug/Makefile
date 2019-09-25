@@ -123,6 +123,33 @@ Tx/fast:
 	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/build
 .PHONY : Tx/fast
 
+BasicFrame.o: BasicFrame.cpp.o
+
+.PHONY : BasicFrame.o
+
+# target to build an object file
+BasicFrame.cpp.o:
+	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/BasicFrame.cpp.o
+.PHONY : BasicFrame.cpp.o
+
+BasicFrame.i: BasicFrame.cpp.i
+
+.PHONY : BasicFrame.i
+
+# target to preprocess a source file
+BasicFrame.cpp.i:
+	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/BasicFrame.cpp.i
+.PHONY : BasicFrame.cpp.i
+
+BasicFrame.s: BasicFrame.cpp.s
+
+.PHONY : BasicFrame.s
+
+# target to generate assembly for a file
+BasicFrame.cpp.s:
+	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/BasicFrame.cpp.s
+.PHONY : BasicFrame.cpp.s
+
 CustomFrame.o: CustomFrame.cpp.o
 
 .PHONY : CustomFrame.o
@@ -177,6 +204,33 @@ FileSender.cpp.s:
 	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/FileSender.cpp.s
 .PHONY : FileSender.cpp.s
 
+KeepAliveFrame.o: KeepAliveFrame.cpp.o
+
+.PHONY : KeepAliveFrame.o
+
+# target to build an object file
+KeepAliveFrame.cpp.o:
+	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/KeepAliveFrame.cpp.o
+.PHONY : KeepAliveFrame.cpp.o
+
+KeepAliveFrame.i: KeepAliveFrame.cpp.i
+
+.PHONY : KeepAliveFrame.i
+
+# target to preprocess a source file
+KeepAliveFrame.cpp.i:
+	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/KeepAliveFrame.cpp.i
+.PHONY : KeepAliveFrame.cpp.i
+
+KeepAliveFrame.s: KeepAliveFrame.cpp.s
+
+.PHONY : KeepAliveFrame.s
+
+# target to generate assembly for a file
+KeepAliveFrame.cpp.s:
+	$(MAKE) -f CMakeFiles/Tx.dir/build.make CMakeFiles/Tx.dir/KeepAliveFrame.cpp.s
+.PHONY : KeepAliveFrame.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,12 +267,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Tx"
 	@echo "... edit_cache"
+	@echo "... BasicFrame.o"
+	@echo "... BasicFrame.i"
+	@echo "... BasicFrame.s"
 	@echo "... CustomFrame.o"
 	@echo "... CustomFrame.i"
 	@echo "... CustomFrame.s"
 	@echo "... FileSender.o"
 	@echo "... FileSender.i"
 	@echo "... FileSender.s"
+	@echo "... KeepAliveFrame.o"
+	@echo "... KeepAliveFrame.i"
+	@echo "... KeepAliveFrame.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

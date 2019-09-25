@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.cpp">
+			<Option target="Tx"/>
+		</Unit>
+		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h">
+			<Option target="Tx"/>
+		</Unit>
 		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.cpp">
 			<Option target="Tx"/>
 		</Unit>
@@ -90,6 +96,12 @@
 			<Option target="Tx"/>
 		</Unit>
 		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h">
+			<Option target="Tx"/>
+		</Unit>
+		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.cpp">
+			<Option target="Tx"/>
+		</Unit>
+		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h">
 			<Option target="Tx"/>
 		</Unit>
 		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Tx/main.cpp">

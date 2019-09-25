@@ -79,7 +79,7 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
         while (x <= sz) {
             char databuffer[MAXDATALEN];
             numbytes = fread(databuffer, 1, MAXDATALEN, f);
-            CustomFrame cf(i, loopback.s_addr, loopback.s_addr, x-1, numbytes,databuffer);
+            CustomFrame cf(numbytes,databuffer,i,loopback.s_addr,loopback.s_addr,x);
             cout << "\r";
             cout << "Sent(" << x << "/" << sz << ")";
             string frame= cf.serialize_frame();
@@ -88,7 +88,7 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
                 x++;
                 fwrite(databuffer,1,numbytes,t);
             }
-            if (numbytes < MAXDATALEN+13) {
+            if (numbytes < MAXDATALEN+14) {
                 if (feof(f)) {
                     cout<<"COMPLETED" << endl ;
 

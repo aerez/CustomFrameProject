@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.cpp">
+			<Option target="Rx"/>
+		</Unit>
+		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.h">
+			<Option target="Rx"/>
+		</Unit>
 		<Unit filename="/home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.cpp">
 			<Option target="Rx"/>
 		</Unit>

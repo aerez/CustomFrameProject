@@ -6,7 +6,23 @@
 
 #IncludeRegexTransform: 
 
+/home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
+cstdint
+-
+string
+-
+
+/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.cpp
+iostream
+-
+cstring
+-
+CustomFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
+
+/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
+BasicFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
 stdint.h
 -
 ostream

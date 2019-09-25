@@ -6,11 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.h
+cstdint
+-
+string
+-
+
 /home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.h
 stdint.h
 -
 iostream
 -
+BasicFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.h
 
 /home/aerez/CLionProjects/CustomFrameProject/Rx/FileReceiver.cpp
 FileReceiver.h

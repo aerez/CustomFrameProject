@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.cpp" "/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/Rx.dir/BasicFrame.cpp.o"
   "/home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.cpp" "/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/Rx.dir/CustomFrame.cpp.o"
   "/home/aerez/CLionProjects/CustomFrameProject/Rx/FileReceiver.cpp" "/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/Rx.dir/FileReceiver.cpp.o"
   "/home/aerez/CLionProjects/CustomFrameProject/Rx/main.cpp" "/home/aerez/CLionProjects/CustomFrameProject/Rx/cmake-build-debug/CMakeFiles/Rx.dir/main.cpp.o"

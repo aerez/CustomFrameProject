@@ -5,41 +5,20 @@
 
 #include "CustomFrame.h"
 
-uint32_t deserialize32bit(char* buffer){
-    uint32_t ret= (buffer[0]<<24)|(buffer[1]<<16)|(buffer[2]<<8)|(buffer[3]);
-    return ret;
-}
 
-uint16_t deserialize16(char* buffer){
-    uint8_t msb,lsb;
-    msb=buffer[0];
-    lsb=buffer[1];
-    uint16_t ret= (msb<<8)| lsb ;
-    return ret;
-}
 
-CustomFrame::CustomFrame(char *buffer) {
-    fileID=buffer[0];
-    dst= deserialize32bit(buffer+1);
-    src=deserialize32bit(buffer+5);
-    chunkID=deserialize16(buffer+9);
-    datasize=deserialize16(buffer+11);
+CustomFrame::CustomFrame(char *buffer) : BasicFrame((Types)buffer[0],deserialize16(buffer+12),buffer+14){
+    fileID=buffer[1];
+    dst= deserialize32bit(buffer+2);
+    src=deserialize32bit(buffer+6);
+    chunkID=deserialize16(buffer+10);
+
     //std::cout<<"datasize "<<datasize<<std::endl;
-    for(uint16_t i=0;i<datasize;i++){
-        data[i]=buffer[13+i];
-    }
+
 
 }
 
-void CustomFrame::showData() {
-    for(int i=0;i<datasize;i++){
-        std::cout<<data[i];
-    }
-}
 
-char* CustomFrame::getData() {
-    return data;
-}
 
 void CustomFrame::print_ip(uint32_t ip) {
     char bytes[4];
@@ -84,18 +63,32 @@ void CustomFrame::setChunkId(uint16_t chunkId) {
     chunkId = chunkId;
 }
 
-uint16_t CustomFrame::getDatasize() const {
-    return datasize;
-}
-
-void CustomFrame::setDatasize(uint16_t datasize) {
-    CustomFrame::datasize = datasize;
-}
 
 std::ostream &operator<<(std::ostream &os, const CustomFrame &frame) {
     os << "sync: " << frame.fileID << " dst: " << frame.dst << " src: " << frame.src << " fileID: " << (int)frame.fileID
-       << " datasize: " << (int)frame.datasize << " data: " << frame.data;
+       << " datasize: " << (int)frame.datalen << " data: " << frame.data;
     return os;
+}
+
+std::string CustomFrame::serialize_frame(){
+
+    char buffer[datalen+14];
+    serialize_8bit(buffer,messageTypes);
+    serialize_8bit(buffer+1,fileID);
+    serialize_32bit(buffer+2, dst);
+    serialize_32bit(buffer+6, src);
+    serialize_16bit(buffer+10,chunkID);
+    serialize_16bit(buffer+12,datalen);
+
+    int counter=0;
+    for(int i=0;i<datalen;i++){
+        counter++;
+        buffer[i+14]=data[i];
+    }
+    std::string frame=std::string(buffer, datalen+14);
+
+
+    return frame;
 }
 
 

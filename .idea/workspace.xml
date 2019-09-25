@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="Tx" targetName="Tx" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8083b714-b29b-4c5d-83c4-1bbd9e392767" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/CustomFrameProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/BasicFrame.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/BasicFrame.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/filetosend/file5.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/filetosend/onemb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/filetosend/team-rocket-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/filetosend/test100k.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tx/filetosend/wireshark.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/CustomFrame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/CustomFrame.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/CustomFrame.h" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/CustomFrame.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/FileSender.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/FileSender.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/CustomFrame.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/CustomFrame.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/FileSender.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/FileSender.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/Tx.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/Tx" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/Tx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/cmake-build-debug/Tx.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/cmake-build-debug/Tx.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/file1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/filetosend/file1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/file5.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Rx/file5.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/onemb.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Rx/onemb.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/t1.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/filetosend/t1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/team-rocket-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Rx/team-rocket-2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/team-rocket.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/filetosend/team-rocket.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/test100k.db" beforeDir="false" afterPath="$PROJECT_DIR$/Rx/test100k.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/w.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Tx/filetosend/w.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tx/wireshark.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Rx/wireshark.jpg" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/keep_alive" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1REURBUhg8tnta6YaFKdPzP4bVJ" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Tx/CMakeLists.txt" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Tx/filetosend/" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tx" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Tx" TARGET_NAME="Tx" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Tx" RUN_TARGET_NAME="Tx">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8083b714-b29b-4c5d-83c4-1bbd9e392767" name="Default Changelist" comment="" />
+      <created>1569231737954</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569231737954</updated>
+      <workItem from="1569231739537" duration="4063000" />
+      <workItem from="1569307936955" duration="7338000" />
+      <workItem from="1569316102556" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tx/FileSender.cpp</url>
+          <line>82</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tx/FileSender.cpp</url>
+          <line>85</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tx/CustomFrame.cpp</url>
+          <line>76</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

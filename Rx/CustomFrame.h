@@ -8,26 +8,29 @@
 
 #include <stdint.h>
 #include <iostream>
+#include "BasicFrame.h"
 
-#define MAXDATALEN 1024
-class CustomFrame {
+
+class CustomFrame : public BasicFrame{
     uint8_t fileID;
     uint32_t dst;
     uint32_t src;
     uint16_t chunkID;
-    uint16_t datasize;
-    char data[MAXDATALEN];
+
 
 public:
 
 
     CustomFrame(char* buffer);
 
-    void showData();
+
+    std::string serialize_frame();
+
+
 
     void print_ip(uint32_t ip);
 
-    char* getData();
+
 
     friend std::ostream &operator<<(std::ostream &os, const CustomFrame &frame);
 
@@ -47,13 +50,13 @@ public:
 
     void setChunkId(uint16_t chunkId);
 
-    uint16_t getDatasize() const;
 
-    void setDatasize(uint16_t datasize);
+
+
 
 
 };
 
-uint32_t deserialize32bit(char* buffer);
+
 
 #endif //TX_CUSTOMFRAME_H

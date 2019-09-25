@@ -123,6 +123,33 @@ Rx/fast:
 	$(MAKE) -f CMakeFiles/Rx.dir/build.make CMakeFiles/Rx.dir/build
 .PHONY : Rx/fast
 
+BasicFrame.o: BasicFrame.cpp.o
+
+.PHONY : BasicFrame.o
+
+# target to build an object file
+BasicFrame.cpp.o:
+	$(MAKE) -f CMakeFiles/Rx.dir/build.make CMakeFiles/Rx.dir/BasicFrame.cpp.o
+.PHONY : BasicFrame.cpp.o
+
+BasicFrame.i: BasicFrame.cpp.i
+
+.PHONY : BasicFrame.i
+
+# target to preprocess a source file
+BasicFrame.cpp.i:
+	$(MAKE) -f CMakeFiles/Rx.dir/build.make CMakeFiles/Rx.dir/BasicFrame.cpp.i
+.PHONY : BasicFrame.cpp.i
+
+BasicFrame.s: BasicFrame.cpp.s
+
+.PHONY : BasicFrame.s
+
+# target to generate assembly for a file
+BasicFrame.cpp.s:
+	$(MAKE) -f CMakeFiles/Rx.dir/build.make CMakeFiles/Rx.dir/BasicFrame.cpp.s
+.PHONY : BasicFrame.cpp.s
+
 CustomFrame.o: CustomFrame.cpp.o
 
 .PHONY : CustomFrame.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Rx"
 	@echo "... edit_cache"
+	@echo "... BasicFrame.o"
+	@echo "... BasicFrame.i"
+	@echo "... BasicFrame.s"
 	@echo "... CustomFrame.o"
 	@echo "... CustomFrame.i"
 	@echo "... CustomFrame.s"

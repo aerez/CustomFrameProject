@@ -70,13 +70,12 @@ int FileReceiver::receiveFile(int sockfd,int filenum) {
     recvfrom(sockfd,&numberofchunks,sizeof(numberofchunks),0,(struct sockaddr*)&their_addr,&addr_len);
     long double x=1;
    while(x<=numberofchunks){
-       char buffer[MAXDATALEN+13]={0};
-       byteReceieved= recvfrom(sockfd,buffer,MAXDATALEN+13,0,(struct sockaddr*)&their_addr,&addr_len);
+       char buffer[MAXDATALEN+14]={0};
+       byteReceieved= recvfrom(sockfd,buffer,MAXDATALEN+14,0,(struct sockaddr*)&their_addr,&addr_len);
        CustomFrame* cf= new CustomFrame(buffer);
        cout << "\r";
        cout<<"Received ("<<x<<"/"<<numberofchunks<<")";
-       fseek(f, cf->getChunkId()*MAXDATALEN,SEEK_SET);
-       fwrite(cf->getData(),1,cf->getDatasize(),f);
+       fwrite(cf->getData(),1,cf->getDatalen(),f);
 
        x++;
    }

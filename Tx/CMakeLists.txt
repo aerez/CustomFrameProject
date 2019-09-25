@@ -3,4 +3,4 @@ project(Tx)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Tx main.cpp CustomFrame.cpp CustomFrame.h FileSender.cpp FileSender.h)
+add_executable(Tx main.cpp CustomFrame.cpp CustomFrame.h FileSender.cpp FileSender.h BasicFrame.cpp BasicFrame.h KeepAliveFrame.cpp KeepAliveFrame.h)
