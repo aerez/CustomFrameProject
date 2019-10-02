@@ -5,9 +5,10 @@
 #include <cstdint>
 #include <string>
 
-enum Types {FileData, KeepAlive};
+
 
 #ifndef CUSTOMFRAMEPROJECT_BASICFRAME_H
+enum Types {FileData, KeepAlive};
 #define CUSTOMFRAMEPROJECT_BASICFRAME_H
 
 #define MAXDATALEN 1024

@@ -12,8 +12,12 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <iostream>
+#include <cmath>
+
 
 #include "CustomFrame.h"
+#include "KeepAliveFrame.h"
 
 #ifndef TX_FILESENDER_H
 #define TX_FILESENDER_H
@@ -31,6 +35,8 @@ public:
     int Run();
 
     int sendFile(int sock, struct addrinfo* p);
+
+    int sendKeepAlive(int sock, struct addrinfo* p);
 };
 
 

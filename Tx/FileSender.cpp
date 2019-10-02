@@ -2,8 +2,7 @@
 // Created by aerez on 9/16/19.
 //
 
-#include <iostream>
-#include <cmath>
+
 #include "FileSender.h"
 
 
@@ -45,6 +44,8 @@ int FileSender::Run(){
     sendFile(sockfd,p);
     freeaddrinfo(servinfo);
 
+
+
     close(sockfd);
 
 
@@ -57,8 +58,8 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
     int counter=5;
     struct in_addr loopback;
     inet_pton(AF_INET,"127.0.0.1",&loopback);
-
-    for(int i=0;i<5;i++) {
+    //sendKeepAlive(sockfd,p);
+    for(int i=0;i<1;i++) {
         string name=path;
         name.append(names[i]);
         f = fopen(name.c_str(), "rb");
@@ -99,11 +100,21 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
 
             }
 
+            if(x%3==0)
+                sendKeepAlive(sockfd,p);
 
 
-        usleep(500);
+
+        usleep(100000);
 
         }
 
     }
     }
+
+int FileSender::sendKeepAlive(int sockfd, struct addrinfo *p) {
+    KeepAliveFrame ka;
+    string msg= ka.serialize_frame();
+    sendto(sockfd, msg.c_str(),msg.size(),0,p->ai_addr,p->ai_addrlen);
+    //usleep(3000);
+}

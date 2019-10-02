@@ -13,8 +13,14 @@ CMakeFiles/Tx.dir/FileSender.cpp.o
  /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
  /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.cpp
  /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
+ /home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h
+CMakeFiles/Tx.dir/KeepAliveFrame.cpp.o
+ /home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
+ /home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.cpp
+ /home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h
 CMakeFiles/Tx.dir/main.cpp.o
  /home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
  /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
  /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
+ /home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h
  /home/aerez/CLionProjects/CustomFrameProject/Tx/main.cpp

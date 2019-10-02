@@ -33,6 +33,8 @@ public:
     int Run();
 
     int receiveFile(int sockfd,int filenum);
+
+    int listener(int sock);
 };
 
 

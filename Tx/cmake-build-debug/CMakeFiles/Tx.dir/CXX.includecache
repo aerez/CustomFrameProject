@@ -12,14 +12,6 @@ cstdint
 string
 -
 
-/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.cpp
-iostream
--
-cstring
--
-CustomFrame.h
-/home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
-
 /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
 BasicFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
@@ -29,10 +21,6 @@ ostream
 -
 
 /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.cpp
-iostream
--
-cmath
--
 FileSender.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 
@@ -57,6 +45,16 @@ arpa/inet.h
 -
 netdb.h
 -
+iostream
+-
+cmath
+-
 CustomFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/CustomFrame.h
+KeepAliveFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h
+
+/home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h
+BasicFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
 

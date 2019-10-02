@@ -9,7 +9,10 @@
 #include "BasicFrame.h"
 
 class KeepAliveFrame : public BasicFrame{
+public:
+    KeepAliveFrame();
 
+    std::string serialize_frame();
 };
 
 

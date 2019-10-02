@@ -7,6 +7,8 @@
 
 using namespace std;
 
+string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
+
 FileReceiver::FileReceiver(const std::string &path) : path(path) {}
 
 int FileReceiver::Run() {
@@ -47,19 +49,26 @@ int FileReceiver::Run() {
     }
     freeaddrinfo(servinfo);
 
-    receiveFile(sockfd,1);
+    listener(sockfd);
+}
+
+int FileReceiver::listener(int sock) {
+    for(int i=0;i<1;i++){
+        receiveFile(sock, i);
+    }
 }
 
 int FileReceiver::receiveFile(int sockfd,int filenum) {
     struct sockaddr_storage their_addr;
     socklen_t addr_len;
-    string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
+
+
     int byteReceieved;
-    for(int i=0;i<5;i++){
+
     FILE *f;
     string name=path;
-    name.append(names[i]);
-    cout<<"receiving file "<<names[i]<<endl;
+    name.append(names[filenum]);
+    cout<<"receiving file "<<names[filenum]<<endl;
     f=fopen(name.c_str(),"wb");
     if(f==NULL){
         cout<<"Error opening file";
@@ -67,25 +76,38 @@ int FileReceiver::receiveFile(int sockfd,int filenum) {
     }
     fseek(f,0,SEEK_SET);
     long double numberofchunks;
-    recvfrom(sockfd,&numberofchunks,sizeof(numberofchunks),0,(struct sockaddr*)&their_addr,&addr_len);
-    long double x=1;
-   while(x<=numberofchunks){
-       char buffer[MAXDATALEN+14]={0};
-       byteReceieved= recvfrom(sockfd,buffer,MAXDATALEN+14,0,(struct sockaddr*)&their_addr,&addr_len);
-       CustomFrame* cf= new CustomFrame(buffer);
-       cout << "\r";
-       cout<<"Received ("<<x<<"/"<<numberofchunks<<")";
-       fwrite(cf->getData(),1,cf->getDatalen(),f);
+    recvfrom(sockfd,&numberofchunks,sizeof numberofchunks,0,(struct sockaddr*)&their_addr,&addr_len);
+    uint16_t x=1;
+    while(x<=numberofchunks){
+        char buffer[MAXDATALEN+14]={0};
+    byteReceieved= recvfrom(sockfd,buffer,MAXDATALEN+14,0,(struct sockaddr*)&their_addr,&addr_len);
+    if(buffer[0]==KeepAlive)
+    {
+        cout<<"received KEEPALIVE"<<endl;
+    }
+    else if(buffer[0]==FileData) {
 
-       x++;
-   }
 
-    if(byteReceieved<0)
-        cout<<endl<<"READ ERROR"<<endl;
+        
+        CustomFrame *cf = new CustomFrame(buffer);
+        //cout << "\r";
+        cout << "Received (" << x << "/" << numberofchunks << ")"<<endl;
+        fwrite(cf->getData(), 1, cf->getDatalen(), f);
+
+        x++;
+    }
+
+        if(byteReceieved<0)
+            cout<<endl<<"READ ERROR"<<endl;
+
+
+    }
 
     cout<<"FILE COMPLETED"<<endl;
     fclose(f);
-    }
+
+
+
 
     return 0;
 
