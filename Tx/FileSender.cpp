@@ -3,12 +3,43 @@
 //
 
 
+#include <fstream>
+#include <sstream>
 #include "FileSender.h"
 
 
 using namespace std;
 
-FileSender::FileSender(char *path) : path(path){};
+FileSender::FileSender(string filename){
+    ifstream file(filename.c_str());
+    string line;
+
+    if(file.is_open()){
+        while(getline(file,line)){
+            istringstream is_line(line);
+            string key;
+            if(getline(is_line,key,'='))
+            {
+                string value;
+                if(getline(is_line,value)){
+                    if(key=="ip")
+                        ip=value;
+                    if(key=="port")
+                        port=value;
+                    if(key=="path")
+                        path=value;
+                }
+            }
+
+
+        }
+        file.close();
+
+    }
+    else cout<<"Unable to open file";
+
+
+}
 
 
 
@@ -17,7 +48,7 @@ int FileSender::Run(){
     int sockfd;
     struct addrinfo hints, *servinfo,*p;
     int rv;
-    int numbytes;
+
 
 
 
@@ -25,7 +56,7 @@ int FileSender::Run(){
     hints.ai_family=AF_INET;
     hints.ai_socktype=SOCK_DGRAM;
 
-    if((rv=getaddrinfo("127.0.0.1",PORT,&hints,&servinfo))!=0){
+    if((rv=getaddrinfo(ip.c_str(),port.c_str(),&hints,&servinfo))!=0){
         cout<<"error getaddrinfo "<<gai_strerror(rv)<<endl;
         return 1;
     }
@@ -57,8 +88,8 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
     string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
     int counter=5;
     struct in_addr loopback;
-    inet_pton(AF_INET,"127.0.0.1",&loopback);
-    //sendKeepAlive(sockfd,p);
+    inet_pton(AF_INET,ip.c_str(),&loopback);
+
     for(int i=0;i<1;i++) {
         string name=path;
         name.append(names[i]);
@@ -76,7 +107,7 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
         cout<< "SENDING: "<<names[i]<<endl;
         cout << "NUMBER OF CHUNKS: " << sz << endl;
         sendto(sockfd, &sz, sizeof(sz), 0, p->ai_addr, p->ai_addrlen);
-        FILE *t=fopen("/home/aerez/test.txt","w");
+
         while (x <= sz) {
             char databuffer[MAXDATALEN];
             numbytes = fread(databuffer, 1, MAXDATALEN, f);
@@ -87,7 +118,7 @@ int FileSender::sendFile(int sockfd, struct addrinfo* p) {
             if (numbytes > 0) {
                 sendto(sockfd, frame.c_str(), frame.size(), 0, p->ai_addr, p->ai_addrlen);
                 x++;
-                fwrite(databuffer,1,numbytes,t);
+
             }
             if (numbytes < MAXDATALEN+14) {
                 if (feof(f)) {

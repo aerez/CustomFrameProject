@@ -20,10 +20,6 @@ stdint.h
 ostream
 -
 
-/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.cpp
-FileSender.h
-/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
-
 /home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 stdio.h
 -
@@ -57,4 +53,10 @@ KeepAliveFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/KeepAliveFrame.h
 BasicFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Tx/BasicFrame.h
+
+/home/aerez/CLionProjects/CustomFrameProject/Tx/main.cpp
+iostream
+-
+FileSender.h
+/home/aerez/CLionProjects/CustomFrameProject/Tx/FileSender.h
 

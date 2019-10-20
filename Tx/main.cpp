@@ -1,7 +1,7 @@
 #include <iostream>
 #include "FileSender.h"
 int main() {
-    FileSender fs("/home/aerez/CLionProjects/CustomFrameProject/Tx/filetosend/");
+    FileSender fs("config.txt");
     fs.Run();
     return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "FileReceiver.h"
 int main() {
-    FileReceiver fr("/home/aerez/CLionProjects/CustomFrameProject/Rx/filereceived/");
+    FileReceiver fr("config.txt");
     fr.Run();
     return 0;
 }

@@ -27,8 +27,12 @@
 
 class FileReceiver {
 std::string path;
+std::string ip;
+std::string port;
 public:
-    FileReceiver(const std::string &path);
+
+
+    FileReceiver(std::string filename);
 
     int Run();
 

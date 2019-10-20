@@ -3,29 +3,66 @@
 //
 
 
+#include <fstream>
+#include <sstream>
 #include "FileReceiver.h"
 
 using namespace std;
 
 string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
 
-FileReceiver::FileReceiver(const std::string &path) : path(path) {}
+
+FileReceiver::FileReceiver(std::string filename) {
+    ifstream file(filename.c_str());
+    string line;
+
+    if(file.is_open()){
+    while(getline(file,line)){
+        istringstream is_line(line);
+        string key;
+        if(getline(is_line,key,'='))
+        {
+            string value;
+            if(getline(is_line,value)){
+                if(key=="ip")
+                    ip=value;
+                if(key=="port")
+                    port=value;
+                if(key=="path")
+                    path=value;
+            }
+        }
+
+
+        }
+    file.close();
+
+    }
+    else cout<<"Unable to open file";
+
+
+}
+
+
 
 int FileReceiver::Run() {
     int sockfd;
     struct addrinfo hints,*servinfo,*p;
     int rv;
-    int numbytes;
-    struct sockaddr_storage their_addr;
 
-    socklen_t addr_len;
-    char s[INET_ADDRSTRLEN];
+
+
 
     memset(&hints,0,sizeof hints);
     hints.ai_family=AF_INET;
     hints.ai_socktype=SOCK_DGRAM;
 
-    if((rv=getaddrinfo("127.0.0.1",PORT,&hints,&servinfo))!=0){
+    cout<<"ip:"<<ip<<endl;
+    cout<<"path:"<<path<<endl;
+    cout<<"port:"<<port<<endl;
+
+
+    if((rv=getaddrinfo(ip.c_str(),port.c_str(),&hints,&servinfo))!=0){
         cout<<"getadddrinfo "<<gai_strerror(rv)<<endl;
         return 1;
     }

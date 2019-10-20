@@ -28,9 +28,11 @@
 
 class FileSender {
 std::string path;
+std::string ip;
+std::string port;
 
 public:
-    FileSender(char* path);
+    FileSender(std::string filename);
 
     int Run();
 

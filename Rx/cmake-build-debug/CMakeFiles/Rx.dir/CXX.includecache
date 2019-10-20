@@ -21,6 +21,10 @@ BasicFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.h
 
 /home/aerez/CLionProjects/CustomFrameProject/Rx/FileReceiver.cpp
+fstream
+-
+sstream
+-
 FileReceiver.h
 /home/aerez/CLionProjects/CustomFrameProject/Rx/FileReceiver.h
 
