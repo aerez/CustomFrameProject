@@ -112,6 +112,8 @@ int FileReceiver::receiveFile(int sockfd,int filenum) {
         return 1;
     }
     fseek(f,0,SEEK_SET);
+    char b[10]={0};
+    recvfrom(sockfd,b,10,0,(struct sockaddr*)&their_addr,&addr_len);
     long double numberofchunks;
     recvfrom(sockfd,&numberofchunks,sizeof numberofchunks,0,(struct sockaddr*)&their_addr,&addr_len);
     uint16_t x=1;

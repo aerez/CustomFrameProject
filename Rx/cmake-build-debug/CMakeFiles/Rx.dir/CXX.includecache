@@ -6,11 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.cpp
+BasicFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.h
+cstring
+-
+
 /home/aerez/CLionProjects/CustomFrameProject/Rx/BasicFrame.h
 cstdint
 -
 string
 -
+
+/home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.cpp
+CustomFrame.h
+/home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.h
 
 /home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.h
 stdint.h
@@ -55,4 +65,10 @@ iostream
 -
 CustomFrame.h
 /home/aerez/CLionProjects/CustomFrameProject/Rx/CustomFrame.h
+
+/home/aerez/CLionProjects/CustomFrameProject/Rx/main.cpp
+iostream
+-
+FileReceiver.h
+/home/aerez/CLionProjects/CustomFrameProject/Rx/FileReceiver.h
 

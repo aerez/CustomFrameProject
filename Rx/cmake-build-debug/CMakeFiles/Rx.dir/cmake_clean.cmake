@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Rx.dir/main.cpp.o"
-  "CMakeFiles/Rx.dir/FileReceiver.cpp.o"
-  "CMakeFiles/Rx.dir/CustomFrame.cpp.o"
   "CMakeFiles/Rx.dir/BasicFrame.cpp.o"
-  "Rx.pdb"
+  "CMakeFiles/Rx.dir/CustomFrame.cpp.o"
+  "CMakeFiles/Rx.dir/FileReceiver.cpp.o"
+  "CMakeFiles/Rx.dir/main.cpp.o"
   "Rx"
+  "Rx.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
