@@ -1,9 +1,14 @@
 #include "filethread.hpp"
 
-Filethread::Filethread(QObject *parent, int sockfd, struct addrinfo *p, std::string filepath):QThread(parent){
+int Filethread::fileCount;
+
+Filethread::Filethread(QObject *parent, int sockfd, struct addrinfo *p, std::string filepath,std::string filename)
+    :QThread(parent){
     this->sockfd=sockfd;
     this->p=p;
     this->filepath=filepath;
+    this->filename=filename;
+    fileCount++;
 }
 
 void Filethread::run(){
@@ -29,10 +34,24 @@ void Filethread::run(){
             fseek(f, 0, SEEK_SET);
             sz = ceil(sz / MAXDATALEN);
             uint16_t x = 1;
-            qDebug()<<"tesst\n";
+            qDebug()<<QString::fromUtf8(filename.c_str())<<"\n";
+            qDebug()<<"filesize: "<<filename.size()<<"\n";
+            int n=filename.size();
+            char name[n];
+
+            strcpy(name, filename.c_str());
+
+            infopacket info(filename.size(),name,fileCount,(uint16_t)sz);
+
+            std::string packet= info.serialize_frame();
+            for(int i=0;i<filename.size();i++){
+                qDebug()<<(char)packet[i+6];
+            }
+
+
+            sendto(sockfd, packet.c_str(), packet.size(), 0, p->ai_addr, p->ai_addrlen);
             emit ConsoleChanged("SENDING: "+QString::fromUtf8(filepath.c_str())+"\n");
             emit ConsoleChanged("NUMBER OF CHUNKS: " + QString::number((int)sz) +"\n");
-            sendto(sockfd, &sz, sizeof(sz), 0, p->ai_addr, p->ai_addrlen);
 
             while (x <= sz) {
                 mutex.lock();
@@ -51,7 +70,7 @@ void Filethread::run(){
                 }
                 if (numbytes < MAXDATALEN+14) {
                     if (feof(f)) {
-                        qDebug()<<"COMPLETED" << endl ;
+                        emit ConsoleChanged("FINISHED !\n");
 
                     }
                     if (ferror(f))
@@ -68,7 +87,7 @@ void Filethread::run(){
 
             this->msleep(500);
 
-            }
+           }
 }
 
 

@@ -20,12 +20,9 @@
 #include "kathread.hpp"
 #include "filethread.hpp"
 #include "Packets/datapacket.hpp"
+#include "Packets/infopacket.hpp"
 
-struct sockInfo
-{
-    int sockfd;
-    struct addrinfo* p;
-};
+
 
 
 QT_BEGIN_NAMESPACE
@@ -43,7 +40,7 @@ public:
 
     int establishConnection();
 
-    int sendFile(std::string filename);
+
 
 
 
@@ -71,9 +68,7 @@ private:
     Ui::SenderWindow *ui;
     QFileSystemModel *dirmodel;
     QFileSystemModel *filemodel;
-    std::string ip;
-    std::string port;
-    std::string path;
+    std::string ip,port,dirpath;
     int sockfd;
     struct addrinfo *p;
     KAThread *kathread;

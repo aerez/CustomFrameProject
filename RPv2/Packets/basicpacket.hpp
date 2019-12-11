@@ -1,13 +1,15 @@
 #ifndef BASICPACKET_HPP
 #define BASICPACKET_HPP
 
-#include <QObject>
+
 #include <QDebug>
 
 
 
-enum Types {FileData, KeepAlive};
+enum Types {Data, KeepAlive,Info};
+
 #define MAXDATALEN 1024
+
 class BasicPacket
 {
 protected:
@@ -25,7 +27,18 @@ public:
 
     void serialize_16bit(char* buffer,uint16_t value);
 
+    uint32_t deserialize32bit(char* buffer);
+
+
+    uint16_t deserialize16(char* buffer);
+
+    const char * getData() const;
+
+    uint16_t getDatalen() const;
+
     virtual std::string serialize_frame()=0;
+
+    Types getType();
 
 
 

@@ -13,16 +13,19 @@
 #include <netdb.h>
 
 #include "Packets/datapacket.hpp"
+#include "Packets/infopacket.hpp"
+
 
 class Filethread : public QThread
 {
     Q_OBJECT
 public:
-    explicit Filethread(QObject *parent = nullptr,int sockfd=0, struct addrinfo *p=nullptr,std::string filepath="");
+    explicit Filethread(QObject *parent = nullptr,int sockfd=0, struct addrinfo *p=nullptr,std::string filepath="",std::string filename="");
     void run() override;
     int sockfd;
+    static int fileCount;
     struct addrinfo *p;
-    std::string filepath;
+    std::string filepath,filename;
 
 signals:
     void ConsoleChanged(QString);

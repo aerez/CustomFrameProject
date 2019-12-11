@@ -3,6 +3,8 @@
 
 
 
+static std::string filename,filepath;
+
 
 SenderWindow::SenderWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -25,6 +27,8 @@ SenderWindow::SenderWindow(QWidget *parent)
     filemodel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
     filemodel->setRootPath(sPath);
     ui->listView->setModel(filemodel);
+
+    ui->progressBar->setValue(0);
 
 
 
@@ -105,67 +109,7 @@ int SenderWindow::establishConnection(){
     return 1;
 }
 
-int SenderWindow::sendFile(std::string filename){
-    FILE* f;
-        int numbytes;
-        //string names[]={"wireshark.jpg","team-rocket-2.png","onemb.jpg","test100k.db","file5.zip"};
-        int counter=5;
-        struct in_addr loopback;
-        inet_pton(AF_INET,ip.c_str(),&loopback);
 
-        for(int i=0;i<1;i++) {
-            //string name=path;
-            //name.append(names[i]);
-            f = fopen(filename.c_str(), "rb");
-            if (f == NULL) {
-                qDebug()<< "fileopen error" << endl;
-                return 1;
-            }
-
-            fseek(f, 0, SEEK_END);
-            long double sz = ftell(f);
-            fseek(f, 0, SEEK_SET);
-            sz = ceil(sz / MAXDATALEN);
-            uint16_t x = 1;
-
-            ui->consoleText->append("SENDING: "+QString::fromUtf8(filename.c_str())+"\n");
-            ui->consoleText->append("NUMBER OF CHUNKS: " + QString::number((int)sz) +"\n");
-            sendto(sockfd, &sz, sizeof(sz), 0, p->ai_addr, p->ai_addrlen);
-
-            while (x <= sz) {
-                char databuffer[MAXDATALEN];
-                numbytes = fread(databuffer, 1, MAXDATALEN, f);
-                DataPacket cf(numbytes,databuffer,i,loopback.s_addr,loopback.s_addr,x);
-                ui->consoleText->append("\r");
-                QString chunkmsg="Sent( "+QString::number(x)+"/"+ QString::number((int)sz)+")";
-                ui->consoleText->append(chunkmsg);
-                std::string frame= cf.serialize_frame();
-                if (numbytes > 0) {
-                    sendto(sockfd, frame.c_str(), frame.size(), 0, p->ai_addr, p->ai_addrlen);
-                    x++;
-
-                }
-                if (numbytes < MAXDATALEN+14) {
-                    if (feof(f)) {
-                        qDebug()<<"COMPLETED" << endl ;
-
-                    }
-                    if (ferror(f))
-                        qDebug() << "Error reading" << endl;
-
-
-                }
-
-
-
-
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-
-            }
-
-        }
-}
 
 
 
@@ -189,14 +133,15 @@ void SenderWindow::on_listView_doubleClicked(const QModelIndex &index)
 {
     QString p;
     p=dirmodel->fileInfo(index).absoluteFilePath();
-    path= p.toUtf8().constData();
+    filepath= p.toUtf8().constData();
+    filename=filemodel->fileInfo(index).fileName().toUtf8().constData();
     ui->btnSend->setText("Send File: "+filemodel->fileInfo(index).fileName());
 }
 
 void SenderWindow::on_btnSend_clicked()
 {
     qDebug()<<"clicked\n";
-    filethread = new Filethread(this, sockfd,p,path);
+    filethread = new Filethread(this, sockfd,p,filepath,filename);
     QObject::connect(filethread,SIGNAL(progressChanged(int,int)),this,SLOT(on_progressBar_valueChanged(int,int)));
     QObject::connect(filethread, SIGNAL(ConsoleChanged(QString)),this,SLOT(onConsoleChanged(QString)));
     filethread->start();

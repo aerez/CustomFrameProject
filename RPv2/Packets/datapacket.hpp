@@ -20,7 +20,7 @@ public:
         DataPacket(uint16_t datalen, char *data, uint8_t fileId, uint32_t dst, uint32_t src,
                     uint16_t chunkId);
 
-
+        DataPacket(char* buffer);
 
         friend std::ostream &operator<<(std::ostream &os, const DataPacket &frame);
 

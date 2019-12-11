@@ -18,21 +18,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Packets/basicpacket.cpp \
     Packets/datapacket.cpp \
+    Packets/infopacket.cpp \
     Packets/kapacket.cpp \
+    configdialog.cpp \
+    filemanager.cpp \
     filethread.cpp \
     kathread.cpp \
     main.cpp \
+    receiverwindow.cpp \
     senderwindow.cpp
 
 HEADERS += \
     Packets/basicpacket.hpp \
     Packets/datapacket.hpp \
+    Packets/infopacket.hpp \
     Packets/kapacket.hpp \
+    configdialog.hpp \
+    filemanager.hpp \
     filethread.hpp \
     kathread.hpp \
+    receiverwindow.hpp \
     senderwindow.hpp
 
 FORMS += \
+    configdialog.ui \
+    receiverwindow.ui \
     senderwindow.ui
 
 # Default rules for deployment.

@@ -43,12 +43,22 @@ std::ostream &operator<<(std::ostream &os, const DataPacket &frame) {
 }
 
 DataPacket::DataPacket(uint16_t datalen, char *data, uint8_t fileId, uint32_t dst, uint32_t src,
-                         uint16_t chunkId) : BasicPacket(FileData, datalen, data), fileID(fileId), dst(dst),
+                         uint16_t chunkId) : BasicPacket(Data, datalen, data), fileID(fileId), dst(dst),
                                              src(src), chunkID(chunkId) {}
 
 
 
 
+DataPacket::DataPacket(char *buffer) : BasicPacket((Types)buffer[0],deserialize16(buffer+12),buffer+14){
+    fileID=buffer[1];
+    dst= deserialize32bit(buffer+2);
+    src=deserialize32bit(buffer+6);
+    chunkID=deserialize16(buffer+10);
+
+    //std::cout<<"datasize "<<datasize<<std::endl;
+
+
+}
 
 
 std::string DataPacket::serialize_frame(){
@@ -67,6 +77,8 @@ std::string DataPacket::serialize_frame(){
         buffer[i+14]=data[i];
     }
     std::string frame=std::string(buffer, datalen+14);
+
+    qDebug()<< QString::fromUtf8(frame.c_str());
 
 
 
